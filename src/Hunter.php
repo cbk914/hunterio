@@ -20,15 +20,19 @@ class Hunter extends Client
     /**
      * Returns all the email addresses from a domain
      *
-     * @param $domain
+     * @param string $domain
+     * @param int $limit
+     * @param int $offset
      * @return string
      */
-    public function searchDomain($domain)
+    public function searchDomain($domain, $limit = 10, $offset = 0)
     {
         $prefix = 'domain-search';
 
         $parameters = [
             'domain' => $domain,
+            'limit'  => $limit,
+            'offset' => $offset,
         ];
 
         return $this->retrieve($prefix, $parameters);
